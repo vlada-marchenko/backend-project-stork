@@ -27,12 +27,14 @@ export const setupSession = (res, session) => {
   res.cookie('accessToken', session.accessToken, {
     httpOnly: true,
     secure: true,
+    sameSite: 'none',
     expires: session.accessTokenValidUntil,
   });
 
   res.cookie('refreshToken', session.refreshToken, {
     httpOnly: true,
     secure: true,
+    sameSite: 'none',
     expires: session.refreshTokenValidUntil,
   });
 };
