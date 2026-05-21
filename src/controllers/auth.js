@@ -20,9 +20,7 @@ export const registerUserController = async (req, res) => {
 
 export const loginUserController = async (req, res) => {
   const session = await loginUser(req.body);
-
   setupSession(res, session);
-
   res.json({
     status: 200,
     message: 'Successfully logged in an user!',
@@ -31,15 +29,12 @@ export const loginUserController = async (req, res) => {
 };
 
 export const refreshUserSessionController = async (req, res) => {
-  console.log(req.cookies);
-
   const session = await refreshUserSession(req.cookies.refreshToken);
-
   setupSession(res, session);
-
   res.json({
     status: 200,
     message: 'Successfully refreshed a session!',
+    data: { accessToken: session.accessToken },
   });
 };
 
