@@ -25,7 +25,7 @@ export const createSession = (userId) => {
 
 export const setupSession = (res, session) => {
   res.cookie('accessToken', session.accessToken, {
-    httpOnly: true,
+    httpOnly: false,
     secure: true,
     sameSite: 'none',
     expires: session.accessTokenValidUntil,
